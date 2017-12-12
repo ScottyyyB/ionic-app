@@ -14,5 +14,59 @@
 
 
 <ion-content padding>
+  <ion-list *ngIf="!imperial">
+    <ion-item>
+      <ion-label floating>Weight (kg)</ion-label>
+      <ion-input type="number" [(ngModel)]="weight"></ion-input>
+    </ion-item>
 
+    <ion-item>
+      <ion-label floating>Height (cm)</ion-label>
+      <ion-input type="number" [(ngModel)]="height"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="imperial">
+    <ion-item>
+      <ion-label floating>Weight (lb)</ion-label>
+      <ion-input type="number" [(ngModel)]="imperialWeight"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Height (in)</ion-label>
+      <ion-input type="number" [(ngModel)]="imperialHeight"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <div padding>
+    <button *ngIf="!imperial" block ion-button (click)="bmiSwitch()">Switch to Imperial</button>
+    <button *ngIf="imperial" block ion-button (click)="bmiSwitch()">Switch to Metric</button>
+  </div>
+
+
+  <div padding>
+    <button block ion-button (click)="calculateBMI()">Calculate</button>
+  </div>
+
+  <ion-card *ngIf="bmiValue && !imperial">
+    <ion-card-header>
+      BMI Calculation
+    </ion-card-header>
+    <ion-card-content>
+      <p>Person: Weight {{this.weight}} kg, Height {{this.height}} cm</p>
+      <p>BMI: {{bmiValue}}</p>
+      <p><strong>You are {{bmiMessage}}</strong></p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="bmiValue && imperial">
+    <ion-card-header>
+      BMI Calculation
+    </ion-card-header>
+    <ion-card-content>
+      <p>Person: Weight {{this.imperialWeight}} lb, Height {{this.imperialHeight}} in</p>
+      <p>BMI: {{bmiValue}}</p>
+      <p><strong>You are {{bmiMessage}}</strong></p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
