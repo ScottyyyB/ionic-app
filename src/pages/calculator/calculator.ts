@@ -19,7 +19,6 @@ export class CalculatorPage {
   imperialHeight: number;
   imperialWeight: number;
   bmiValue: number;
-  bmiImperialValue: number;
   bmiMessage: string;
 
 
